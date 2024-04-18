@@ -1,4 +1,5 @@
-import { Type } from 'class-transformer';
+import { hashSync } from 'bcryptjs';
+import { Transform, Type } from 'class-transformer';
 import {
   IsDate,
   IsEmail,
@@ -20,6 +21,9 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   @MinLength(8)
+  @Transform(({ value }: { value: string }) => hashSync(value, 10), {
+    groups: ['transform'],
+  })
   password: string;
 
   @IsDate()
@@ -30,7 +34,7 @@ export class CreateUserDto {
   @IsString()
   @Length(11)
   @IsNotEmpty()
-  cpf: number;
+  cpf: string;
 
   @IsString()
   @IsNotEmpty()
@@ -39,7 +43,7 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   @Length(8)
-  zipcode: number;
+  zipcode: string;
 
   @IsString()
   @IsNotEmpty()
@@ -47,7 +51,7 @@ export class CreateUserDto {
 
   @IsString()
   @IsNotEmpty()
-  phone_number: number;
+  phone_number: string;
 
   @IsString()
   @IsNotEmpty()
