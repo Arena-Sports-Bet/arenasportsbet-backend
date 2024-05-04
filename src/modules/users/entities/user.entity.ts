@@ -19,8 +19,6 @@ export class User {
   state: string;
   city: string;
 
-  account: Account;
-
   constructor() {
     this.id = randomUUID();
   }
