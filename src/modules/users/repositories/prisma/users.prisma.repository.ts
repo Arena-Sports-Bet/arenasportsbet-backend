@@ -48,6 +48,7 @@ export class UsersPrismaRepository implements UsersRepository {
     const user = await this.prisma.user.update({
       where: { id },
       data: { ...data },
+      include: { account: true },
     });
     return plainToInstance(User, user);
   }
