@@ -8,6 +8,7 @@ import {
   Length,
   MinLength,
 } from 'class-validator';
+import { Account } from '../entities/account.entity';
 
 export class CreateUserDto {
   @IsString()

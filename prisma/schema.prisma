@@ -20,6 +20,17 @@ model User {
   phone_number  String @unique
   state         String
   city          String
+  account       Account?
 
   @@map("users")
+}
+
+model Account {
+  id              String  @id
+  account_balance Int     
+  bonus_balance   Int     
+  user_id         String  @unique
+  user            User    @relation(fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map("accounts")
 }

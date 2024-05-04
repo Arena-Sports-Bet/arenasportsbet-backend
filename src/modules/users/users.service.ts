@@ -10,6 +10,7 @@ import { UsersRepository } from './repositories/users.repository';
 @Injectable()
 export class UsersService {
   constructor(private usersRepository: UsersRepository) {}
+
   async create(createUserDto: CreateUserDto) {
     const findUser = await this.usersRepository.findByEmail(
       createUserDto.email,
@@ -18,6 +19,7 @@ export class UsersService {
       throw new ConflictException('Email already exists.');
     }
     const user = await this.usersRepository.create(createUserDto);
+
     return user;
   }
 
