@@ -1,5 +1,6 @@
 import { Exclude } from 'class-transformer';
 import { randomUUID } from 'crypto';
+import { Account } from './account.entity';
 
 export class User {
   readonly id: string;
@@ -17,6 +18,8 @@ export class User {
   phone_number: string;
   state: string;
   city: string;
+
+  account: Account;
 
   constructor() {
     this.id = randomUUID();
